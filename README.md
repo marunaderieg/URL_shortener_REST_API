@@ -17,6 +17,8 @@ In order to redirect from a short url to the original url use the **GET** method
 <br><br>**Example:** Call http://127.0.0.1:8080/F8eiKwl9 and you will be redirected to https://drewderieg.com/thisIsAVeryLongUrl.
 
 ## Installation
+To build and run go you must have a current GoLang installation on your system. Visit https://go.dev/doc/install for more information.
+
 Since this API is deploying a SQLite database you must ensure that:
 - you set the environment variable `CGO_ENABLED=1`
 - you have `gcc` compile present within your path
