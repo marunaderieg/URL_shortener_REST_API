@@ -13,12 +13,10 @@ import (
 	"os"
 )
 
-// Request Struct JSON
 type Request struct {
 	Url string `json:"url"`
 }
 
-// Database
 var database *sql.DB
 
 /*Saves the JSON input of form "url":"example.com/mylongurl" into a sqlite database. Each url is assigned a random
@@ -56,8 +54,8 @@ func shorten(w http.ResponseWriter, r *http.Request) {
 			i -= 1
 		}
 	}
-	// Error handling in case a lot of entries are saved to the DB. Consider doing autoincrement of the primary key
-	// or create shortened urls with more than 8 characters.
+	/* Error handling in case a lot of entries are saved to the DB. Consider doing autoincrement of the primary key
+	or create shortened urls with more than 8 characters. */
 	w.Header().Set("Content-Type", "application/json")
 	response := `{"errormessage": "too many entries are stored in the database"}`
 	w.WriteHeader(500)
@@ -85,7 +83,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// database
+	// Create Database
 	os.Remove("sqlite-database.db")
 	database, _ = sql.Open("sqlite3", "./sqlite-database.db")
 	statement, _ :=
