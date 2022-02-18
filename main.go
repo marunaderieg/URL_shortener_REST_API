@@ -36,10 +36,10 @@ func shorten(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(response))
 		return
 	}
-	/*	Generate a random string of 8 characters, which will serve as the shortened url. This random string is also the
-		primary key in the database. Try to add the new "short_url - url" pair to the database. This will return an error
-		if the generated short url already exists in the database. Repeat until the database insert has been successful
-		or until 62**8 iterations have been performed.*/
+	/* Generate a random string of 8 characters, which will serve as the shortened url. This random string is also the
+	primary key in the database. Try to add the new "short_url - url" pair to the database. This will return an error
+	if the generated short url already exists in the database. Repeat until the database insert has been successful
+	or until 62**8 iterations have been performed. */
 	i := math.Pow(62, 8)
 	for i > 0 {
 		random := randstr.String(8)
